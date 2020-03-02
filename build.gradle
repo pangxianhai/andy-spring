@@ -1,0 +1,113 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'idea'
+    id 'maven'
+    id 'org.springframework.boot' version '2.0.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
+}
+
+ext {
+    set('springCloudVersion', "Finchley.SR2")
+    set('apacheCommonVersion', '3.9')
+    set('jodaVersion', '2.10.5')
+    set('httpclientVersion', '4.5.10')
+    set('bcprovVersion', '1.64')
+    set('dom4jVersion', '1.6.1')
+    set('mybatisVersion', '3.5.3')
+    set('mybatisSpringVersion', '2.0.3')
+    set('guavaVersion', '28.1-jre')
+    set('hikariCPVersion', '3.4.1')
+    set('lombokVersion', '1.18.10')
+    set('mysqlDriverVersion', '8.0.18')
+    set('fastjsonVerson', '1.2.62')
+    set('jedisVersion', '2.9.0')
+    set('kafkaClientVersion', '0.10.2.2')
+    set('zookeeperVersion', '3.4.13')
+    set('apacheCommonsVersion', '4.3')
+    set('soyoungZkConfigVersion', '1.2-RELEASE')
+    set('validationVersion', '2.0.1.Final')
+    set('hibernateValidationVersion', '6.0.16.Final')
+}
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compile "org.apache.commons:commons-lang3:${apacheCommonVersion}"
+    compile "joda-time:joda-time:${jodaVersion}"
+    compile "org.apache.httpcomponents:httpclient:${httpclientVersion}"
+    compile "org.bouncycastle:bcprov-jdk15on:${bcprovVersion}"
+    compile "dom4j:dom4j:${dom4jVersion}"
+    compile "org.mybatis:mybatis:${mybatisVersion}"
+    compile "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+    compile "com.zaxxer:HikariCP:${hikariCPVersion}"
+    compile "com.google.guava:guava:${guavaVersion}"
+    compile "mysql:mysql-connector-java:${mysqlDriverVersion}"
+    compile "com.alibaba:fastjson:${fastjsonVerson}"
+    compile "redis.clients:jedis:${jedisVersion}"
+    compile "org.apache.kafka:kafka-clients:${kafkaClientVersion}"
+    compile "org.apache.zookeeper:zookeeper:${zookeeperVersion}"
+    compile "org.apache.commons:commons-collections4:${apacheCommonsVersion}"
+    compile("javax.validation:validation-api:${validationVersion}")
+    compile("org.hibernate.validator:hibernate-validator:${hibernateValidationVersion}")
+    compile "org.springframework:spring-core"
+    compile "org.springframework:spring-context"
+    compile "org.springframework:spring-jdbc"
+    compile "org.springframework:spring-web"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.springframework.boot:spring-boot"
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    compile "com.fasterxml.jackson.core:jackson-databind"
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile "org.springframework:spring-webmvc"
+    implementation 'org.springframework.cloud:spring-cloud-context'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    jcenter()
+    maven { url 'https://repo.spring.io/milestone' }
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+jar {
+    enabled = true
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier "sources"
+}
+
+version = '1.0.0-SNAPSHOT'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.andy.base'
+            artifactId = 'andy-spring'
+            from components.java
+            artifact sourceJar
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+            }
+        }
+    }
+}
+
