@@ -1,5 +1,3 @@
-org.springframework.context.ApplicationListener=\
-com.andy.spring.hprose.HproseStartListener,\
-com.andy.spring.hprose.HproseStopListener
+
 
 
