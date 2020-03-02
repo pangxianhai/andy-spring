@@ -25,7 +25,6 @@ ext {
     set('kafkaClientVersion', '0.10.2.2')
     set('zookeeperVersion', '3.4.13')
     set('apacheCommonsVersion', '4.3')
-    set('soyoungZkConfigVersion', '1.2-RELEASE')
     set('validationVersion', '2.0.1.Final')
     set('hibernateValidationVersion', '6.0.16.Final')
 }
