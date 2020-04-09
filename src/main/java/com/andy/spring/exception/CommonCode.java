@@ -10,7 +10,7 @@ public enum CommonCode {
     /**
      * 成功
      */
-    SUCCESS(0),
+    SUCCESS(200),
     /**
      * 权限不足
      */

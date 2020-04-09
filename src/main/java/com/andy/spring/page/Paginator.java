@@ -1,6 +1,5 @@
 package com.andy.spring.page;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import java.io.Serializable;
 
 /**
@@ -74,7 +73,7 @@ public class Paginator implements Serializable {
         }
     }
 
-    @JSONField(serialize = false)
+
     public Paginator getPaginator() {
         return this;
     }

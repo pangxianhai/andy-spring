@@ -1,7 +1,5 @@
 package com.andy.spring.interceptor;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.andy.spring.context.ThreadContext;
 import com.andy.spring.util.DateUtil;
 import com.andy.spring.util.JsonUtil;
@@ -41,7 +39,6 @@ public class MyHandlerInterceptor {
         logItem.put("time", DateUtil.format("yyyy-MM-dd HH:mm:ss:SSS"));
         logItem.put("params", JsonUtil.toJson(joinPoint.getArgs()));
         logItem.put("result", JsonUtil.toJson(returnValue));
-        logger.info(JSON.toJSONString(logItem, SerializerFeature.DisableCircularReferenceDetect,
-            SerializerFeature.WriteNonStringValueAsString));
+        logger.info(JsonUtil.toJson(logItem));
     }
 }

@@ -3,9 +3,9 @@ package com.andy.spring.auth;
 import com.andy.spring.type.BaseType;
 
 /**
- * 基础模块-权限:
+ * 基础模块-权限
  *
- * <p>角色类型
+ * 角色类型
  *
  * @author 庞先海 2018-07-10
  */

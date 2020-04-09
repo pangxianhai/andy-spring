@@ -20,13 +20,13 @@ ext {
     set('hikariCPVersion', '3.4.1')
     set('lombokVersion', '1.18.10')
     set('mysqlDriverVersion', '8.0.18')
-    set('fastjsonVerson', '1.2.62')
     set('jedisVersion', '2.9.0')
     set('kafkaClientVersion', '0.10.2.2')
     set('zookeeperVersion', '3.4.13')
     set('apacheCommonsVersion', '4.3')
     set('validationVersion', '2.0.1.Final')
     set('hibernateValidationVersion', '6.0.16.Final')
+    set('gsonVersion', '2.8.6')
 }
 
 dependencies {
@@ -42,13 +42,13 @@ dependencies {
     compile "com.zaxxer:HikariCP:${hikariCPVersion}"
     compile "com.google.guava:guava:${guavaVersion}"
     compile "mysql:mysql-connector-java:${mysqlDriverVersion}"
-    compile "com.alibaba:fastjson:${fastjsonVerson}"
     compile "redis.clients:jedis:${jedisVersion}"
     compile "org.apache.kafka:kafka-clients:${kafkaClientVersion}"
     compile "org.apache.zookeeper:zookeeper:${zookeeperVersion}"
     compile "org.apache.commons:commons-collections4:${apacheCommonsVersion}"
     compile("javax.validation:validation-api:${validationVersion}")
     compile("org.hibernate.validator:hibernate-validator:${hibernateValidationVersion}")
+    compile("com.google.code.gson:gson:${gsonVersion}")
     compile "org.springframework:spring-core"
     compile "org.springframework:spring-context"
     compile "org.springframework:spring-jdbc"
